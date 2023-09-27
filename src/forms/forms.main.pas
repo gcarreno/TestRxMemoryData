@@ -28,6 +28,11 @@ type
     ilMain: TImageList;
     imgAccountsFilterClear: TImage;
     lblAccountsFilterByAlias: TLabel;
+    mnuAccountsSep1: TMenuItem;
+    mnuAccountsFilterClear: TMenuItem;
+    mnuAccounts: TMenuItem;
+    mnuAccountsAddData: TMenuItem;
+    mnuClearData: TMenuItem;
     mnuFile: TMenuItem;
     mnuFileExit: TMenuItem;
     mmMain: TMainMenu;
@@ -64,6 +69,7 @@ implementation
 
 uses
   LCLType
+, LCLProc
 ;
 
 const
@@ -79,6 +85,12 @@ begin
   Application.OnHint:= @DisplayHint;
   InitShortcuts;
   imgAccountsFilterClear.ImageIndex:= 0;
+  // Import Hint+ShortCut text from Filter clear
+  imgAccountsFilterClear.Hint:= Format('%s (%s)|%s', [
+    GetShortHint(actAccountsFilterClear.Hint),
+    ShortCutToText(actAccountsFilterClear.ShortCut),
+    GetLongHint(actAccountsFilterClear.Hint)
+  ]);
   rmdAccounts.Open;
 end;
 
@@ -164,6 +176,8 @@ begin
   rdgAccounts.BeginUpdate;
 
   rmdAccounts.CloseOpen;
+
+  edtAccountsFilterByAlias.Clear;
 
   rdgAccounts.AutoAdjustColumns;
   rdgAccounts.EndUpdate(True);

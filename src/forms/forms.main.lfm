@@ -11,42 +11,9 @@ object frmMain: TfrmMain
   Menu = mmMain
   Position = poScreenCenter
   ShowHint = True
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  object gbInfo: TGroupBox
-    Left = 0
-    Height = 80
-    Top = 93
-    Width = 750
-    Align = alTop
-    AutoSize = True
-    Caption = ' Info '
-    ClientHeight = 62
-    ClientWidth = 748
-    TabOrder = 4
-    object lblInfoColumns: TStaticText
-      Left = 8
-      Height = 19
-      Top = 8
-      Width = 732
-      Align = alTop
-      AutoSize = True
-      BorderSpacing.Around = 8
-      Caption = 'When the grid is focused, you can press Ctrl+W show a dialog where you can show/hide/rearrange the columns.'
-      TabOrder = 0
-    end
-    object lblInfoCopyCell: TStaticText
-      Left = 8
-      Height = 19
-      Top = 35
-      Width = 732
-      Align = alTop
-      AutoSize = True
-      BorderSpacing.Around = 8
-      Caption = 'When a cell is focused, you can press Ctrl+C to copy it''s value.'
-      TabOrder = 1
-    end
-  end
   object panButtons: TPanel
     Left = 0
     Height = 37
@@ -130,6 +97,40 @@ object frmMain: TfrmMain
       Center = True
       Images = ilMain
       OnClick = actAccountsFilterClearExecute
+    end
+  end
+  object gbInfo: TGroupBox
+    Left = 0
+    Height = 80
+    Top = 93
+    Width = 750
+    Align = alTop
+    AutoSize = True
+    Caption = ' Grid Info '
+    ClientHeight = 62
+    ClientWidth = 748
+    TabOrder = 4
+    object lblInfoColumns: TStaticText
+      Left = 8
+      Height = 19
+      Top = 8
+      Width = 732
+      Align = alTop
+      AutoSize = True
+      BorderSpacing.Around = 8
+      Caption = 'When the grid is focused, you can press Ctrl+W show a dialog where you can show/hide/rearrange the columns.'
+      TabOrder = 0
+    end
+    object lblInfoCopyCell: TStaticText
+      Left = 8
+      Height = 19
+      Top = 35
+      Width = 732
+      Align = alTop
+      AutoSize = True
+      BorderSpacing.Around = 8
+      Caption = 'When a cell is focused, you can press Ctrl+C to copy it''s value.'
+      TabOrder = 1
     end
   end
   object rdgAccounts: TRxDBGrid
@@ -307,6 +308,21 @@ object frmMain: TfrmMain
         Action = actFileExit
       end
     end
+    object mnuAccounts: TMenuItem
+      Caption = 'Acco&unts'
+      object mnuAccountsAddData: TMenuItem
+        Action = actAccountsAddData
+      end
+      object mnuClearData: TMenuItem
+        Action = actAccountsClearData
+      end
+      object mnuAccountsSep1: TMenuItem
+        Caption = '-'
+      end
+      object mnuAccountsFilterClear: TMenuItem
+        Action = actAccountsFilterClear
+      end
+    end
   end
   object alMain: TActionList
     OnUpdate = alMainUpdate
@@ -321,18 +337,21 @@ object frmMain: TfrmMain
       Category = 'Accounts'
       Caption = '&Add Data'
       Hint = 'Add Data|Adds 3 rows at a time'
+      ShortCut = 32833
       OnExecute = actAccountsAddDataExecute
     end
     object actAccountsClearData: TAction
       Category = 'Accounts'
       Caption = '&Clear Data'
       Hint = 'Clear Data|Clears the entire dataset'
+      ShortCut = 32858
       OnExecute = actAccountsClearDataExecute
     end
     object actAccountsFilterClear: TAction
       Category = 'Accounts'
-      Caption = '< X'
-      Hint = 'Clear Filter|Clears the contents of the filter string'
+      Caption = 'Clear Filter'
+      Hint = 'Clear Filter|Clears the filter'
+      ShortCut = 32835
       OnExecute = actAccountsFilterClearExecute
     end
   end

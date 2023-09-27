@@ -73,7 +73,7 @@ uses
 ;
 
 const
-  cVersion = '0.1.0';
+  cVersion = {$I version.inc};
 
 {$R *.lfm}
 

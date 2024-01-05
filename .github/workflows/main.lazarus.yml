@@ -20,7 +20,7 @@ jobs:
     uses: gcarreno/re-usable-workflows/.github/workflows/build.lazarus.yml@main
     with:
       config: '{
-          "app-name": "testrxmemorydataset",
+          "app-name": "testrxmemorydata",
           "lpi-path": "src",
           "bin-path": "bin",
           "build-mode": "Release",
@@ -62,7 +62,7 @@ jobs:
     needs: [ build ]
     with:
       config: '{
-          "app-name": "testrxmemorydataset",
+          "app-name": "testrxmemorydata",
           "tag": "${{ github.ref_name }}",
           "cliff-cfg": "cliff.toml",
           "win": "${{ needs.build.outputs.win-artefact-path }}",

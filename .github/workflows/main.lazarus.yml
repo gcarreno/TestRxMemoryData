@@ -24,7 +24,7 @@ jobs:
           "lpi-path": "src",
           "bin-path": "bin",
           "build-mode": "Release",
-          "lazarus-packages": "",
+          "lazarus-packages": "Rx",
           "matrix": {
             "os": [
               "ubuntu-latest",
